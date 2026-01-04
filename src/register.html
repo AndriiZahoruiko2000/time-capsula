@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+
+  <body class="register-page">
+    <load src="./partials/header.html" />
+    <main class="register-main">
+      <form action="" class="js-register-form register-form">
+        <div class="register-fields">
+          <input type="email" placeholder="email" name="email" />
+          <input type="password" placeholder="password" name="password" />
+          <input
+            type="password"
+            placeholder="repeat-password"
+            name="repeat-password"
+          />
+        </div>
+        <button>Create an Account</button>
+      </form>
+    </main>
+    <section class="js-confirm-section confirm-section is-hidden">
+      <div class="confirm-card">
+        <form action="" class="js-confirm-form confirm-form">
+          <input type="email" placeholder="email" name="confirm-email" />
+          <input type="number" name="code" placeholder="code" />
+          <button>Confirm an email</button>
+        </form>
+      </div>
+    </section>
+    <load src="./partials/footer.html" />
+    <script src="./js/register.ts" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+footer {
+  padding: 32px clamp(20px, 6vw, 72px) 40px;
+  background: linear-gradient(120deg, #f5e2c8 0%, #fef6ea 100%);
+  border-top: 2px solid var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: rgba(47, 122, 122, 0.15);
+  top: -120px;
+  right: -80px;
+}
+
+footer > div {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+footer h2 {
+  margin: 0;
+  font-family: "Fraunces", serif;
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 600;
+}
+
+.footer-meta {
+  font-size: 14px;
+  opacity: 0.75;
+}
