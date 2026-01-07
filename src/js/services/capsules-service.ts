@@ -2,6 +2,7 @@ import type {
   Capsula,
   GetCapsulasParams,
   GetCapsulasResponse,
+  NewCapsula,
   UpdateCapsulaBody,
 } from "../types/capsules";
 import { api } from "./server-config";
@@ -11,8 +12,8 @@ export async function getCapsula(params?: GetCapsulasParams) {
   return response.data;
 }
 
-export async function createCapsule() {
-  const response = await api.post("/capsules");
+export async function createCapsule(capsula: NewCapsula) {
+  const response = await api.post<Capsula>("/capsules", capsula);
   return response.data;
 }
 

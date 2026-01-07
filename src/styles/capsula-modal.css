@@ -2,10 +2,14 @@
   position: fixed;
   inset: 0;
   display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   place-items: center;
-  padding: clamp(20px, 5vw, 48px);
-  background: rgba(27, 26, 26, 0.42);
-  backdrop-filter: blur(6px);
+  gap: clamp(12px, 2vw, 24px);
+  padding: clamp(20px, 6vw, 52px);
+  background: radial-gradient(circle at 20% 20%, rgba(228, 88, 59, 0.28), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(47, 122, 122, 0.28), transparent 55%),
+    rgba(27, 26, 26, 0.55);
+  backdrop-filter: blur(8px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
@@ -17,17 +21,49 @@
   pointer-events: auto;
 }
 
+.js-modal-prev,
+.js-modal-next {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  background: #fffaf0;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(27, 26, 26, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.js-modal-prev:hover,
+.js-modal-prev:focus-visible,
+.js-modal-next:hover,
+.js-modal-next:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 22px rgba(27, 26, 26, 0.26);
+}
+
 .modal {
   width: min(720px, 100%);
-  background: #fffaf0;
+  background: linear-gradient(160deg, #fffaf0 0%, #fff1da 100%);
   border: 2px solid var(--ink);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  padding: clamp(22px, 5vw, 36px);
+  border-radius: 24px;
+  box-shadow: 0 26px 44px rgba(27, 26, 26, 0.22);
+  padding: clamp(22px, 5vw, 40px);
   display: grid;
   gap: 18px;
+  position: relative;
+  overflow: hidden;
   transform: translateY(12px) scale(0.98);
   transition: transform 0.25s ease;
+}
+
+.modal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(228, 88, 59, 0.18), transparent 55%),
+    radial-gradient(circle at bottom left, rgba(47, 122, 122, 0.2), transparent 60%);
+  pointer-events: none;
 }
 
 .backdrop.is-open .modal {
@@ -37,6 +73,8 @@
 .modal-card {
   display: grid;
   gap: 18px;
+  position: relative;
+  z-index: 1;
 }
 
 .modal-header {
@@ -55,42 +93,21 @@
 
 .modal-close {
   border: 2px solid var(--ink);
-  background: var(--paper-deep);
+  background: #fff3df;
   color: var(--ink);
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 6px 14px rgba(27, 26, 26, 0.16);
+  box-shadow: 0 8px 16px rgba(27, 26, 26, 0.18);
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .modal-close:hover,
 .modal-close:focus-visible {
-  background: #fff3df;
+  background: #ffe6c3;
   transform: translateY(-1px);
-}
-
-.modal button {
-  font-family: "Space Grotesk", "Segoe UI", sans-serif;
-  border: 2px solid var(--ink);
-  border-radius: 999px;
-  padding: 10px 18px;
-  font-weight: 600;
-  background: var(--accent);
-  color: #fffaf0;
-  box-shadow: 0 10px 18px rgba(27, 26, 26, 0.18);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease,
-    background 0.2s ease;
-}
-
-.modal button:hover,
-.modal button:focus-visible {
-  background: var(--accent-deep);
-  transform: translateY(-2px);
-  box-shadow: 0 14px 22px rgba(27, 26, 26, 0.22);
 }
 
 .modal-message,
@@ -104,13 +121,13 @@
   align-items: baseline;
   gap: 10px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .modal-meta__label {
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  font-size: 12px;
+  font-size: 11px;
   opacity: 0.6;
 }
 
@@ -124,8 +141,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-weight: 600;
-  color: var(--accent-deep);
+  font-weight: 700;
+  color: var(--teal);
   border-bottom: 2px solid transparent;
   padding-bottom: 2px;
   transition: border-color 0.2s ease, transform 0.2s ease;
@@ -139,8 +156,44 @@
   transform: translateY(-1px);
 }
 
+.modal button,
+.delete-capsula-btn {
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 700;
+  background: var(--accent);
+  color: #fffaf0;
+  box-shadow: 0 12px 20px rgba(27, 26, 26, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.modal button:hover,
+.modal button:focus-visible,
+.delete-capsula-btn:hover,
+.delete-capsula-btn:focus-visible {
+  background: var(--accent-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 24px rgba(27, 26, 26, 0.24);
+}
+
+@media (max-width: 720px) {
+  .backdrop {
+    grid-template-columns: 1fr;
+  }
+
+  .js-modal-prev,
+  .js-modal-next {
+    display: none;
+  }
+}
+
 @media (max-width: 600px) {
   .modal {
     padding: 20px;
+    border-radius: 18px;
   }
 }

@@ -8,4 +8,5 @@ export const refs = {
   capsulaModalBackdrop: document.querySelector(".js-backdrop"),
   prevButton: document.querySelector(".js-modal-prev"),
   nextButton: document.querySelector(".js-modal-next"),
+  createCapsulaForm: document.querySelector(".js-create-capsula-form"),
 };

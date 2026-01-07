@@ -50,3 +50,18 @@ export interface UpdateCapsulaBody {
   media?: string[];
   files?: string[];
 }
+
+export interface NewCapsula {
+  userId: string;
+  location: {
+    lat: number;
+    lon: number;
+    country: string;
+    city: string;
+  };
+  timeToOpen: string;
+  title: string;
+  message: string;
+  media?: string[];
+  files?: string[];
+}
