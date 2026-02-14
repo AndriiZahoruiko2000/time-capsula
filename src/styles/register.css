@@ -1,3 +1,5 @@
+/* register */
+
 .register-main {
   min-height: calc(100vh - 120px);
   display: flex;
@@ -25,7 +27,11 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top left, rgba(47, 122, 122, 0.18), transparent 60%);
+  background: radial-gradient(
+    circle at top left,
+    rgba(47, 122, 122, 0.18),
+    transparent 60%
+  );
   pointer-events: none;
 }
 
@@ -44,7 +50,9 @@
   border: 2px solid #2a2a2a;
   background: #fffdf6;
   font-size: 15px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .register-form input:focus,
@@ -66,7 +74,9 @@
   font-weight: 600;
   letter-spacing: 0.3px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease,
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
     background 0.2s ease;
 }
 
