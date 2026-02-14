@@ -18,7 +18,20 @@ export function createTemplateCapsula(
           <span class="capsula-meta__value">${capsula.timeToOpen}</span>
         </div>
         <div class="capsula-map">
-          ${capsula.location}
+        <gmp-map
+            center="${capsula.location.lat}, ${capsula.location.lon}"
+            zoom="10"
+            map-id="DEMO_MAP_ID"
+            class="js-map map-canvas"
+          >
+             <gmp-advanced-marker position="${capsula.location.lat}, ${capsula.location.lon}" title="${capsula.title}">
+    <img
+      class="flag-icon"
+      src="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+    />
+  </gmp-advanced-marker>
+          </gmp-map>
+         
         </div>
       </li>`;
 }
@@ -52,8 +65,23 @@ export function createTemplateCapsulaModal(capsula: Capsula) {
     <span class="modal-meta__label">Time to Open</span>
     <span class="modal-meta__value">${capsula.timeToOpen}</span>
   </div>
-  <a class="modal-location" href="">${capsula.location}</a>
+  <a class="modal-location" href="">${capsula.location.lat}, ${capsula.location.lon}</a>
   <button class="delete-capsula-btn" data-id="${capsula._id}">Delete Capsula</button>
 </div>`;
   }
+}
+
+export function createTemplateFlag(capsula: Capsula) {
+  return `
+  <gmp-advanced-marker position="${capsula.location.lat}, ${capsula.location.lon}" title="${capsula.title}">
+    <img
+      class="flag-icon"
+      src="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+    />
+  </gmp-advanced-marker>
+`;
+}
+
+export function createTemplateFlags(cpasules: Capsula[]) {
+  return cpasules.map(createTemplateFlag).join("");
 }

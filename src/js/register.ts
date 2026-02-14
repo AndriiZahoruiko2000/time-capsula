@@ -20,14 +20,15 @@ refs.registerForm?.addEventListener("submit", async (e) => {
       email: registerEmail,
       password: registerPassword,
     };
-    const response = await registerUser(registerData);
-    refs.confirmSection?.classList.remove("is-hidden");
+    // const response = await registerUser(registerData);
+    refs.confirmSection?.classList.add("is-open");
   } else {
     iziToast.show({
       title: "Hey",
       message: "Please password does not match",
     });
   }
+
   form.reset();
 });
 
@@ -46,4 +47,9 @@ refs.confirmForm?.addEventListener("submit", async (e) => {
   const link = document.createElement("a");
   link.href = "/login";
   link.click();
+});
+
+refs.confirmSection?.addEventListener("click", (e) => {
+  if (e.target !== refs.confirmSection) return;
+  refs.confirmSection?.classList.remove("is-open");
 });

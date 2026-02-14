@@ -4,6 +4,89 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
   </head>
-  <body></body>
+  <body>
+    <load src="./partials/header.html" />
+    <main class="map-main">
+      <section class="map-hero">
+        <div class="map-hero-copy">
+          <span class="eyebrow">Capsule Atlas</span>
+          <h1>Navigate memories pinned across the map.</h1>
+          <p>
+            Zoom into stories, uncover hidden capsules, and plot your own
+            coordinates for the future. Every pin is a memory waiting for its
+            reveal.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="./create.html">Drop a new pin</a>
+            <a class="secondary-button" href="./capsules.html">View all capsules</a>
+          </div>
+        </div>
+        <div class="map-hero-panel">
+          <div class="map-panel-card">
+            <h3>Map ritual</h3>
+            <p>
+              Find places that mattered. Lock a capsule to the location so the
+              reveal feels anchored in real space.
+            </p>
+          </div>
+          <div class="map-panel-card">
+            <h3>Live reveal</h3>
+            <p>
+              Track the countdown and get alerts when a capsule is ready to
+              open, right where it was buried.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="map-shell">
+        <div class="map-panel">
+          <h2>On the map</h2>
+          <p>
+            Explore capsules across cities and coastlines. Click a pin to see
+            what is hidden there.
+          </p>
+          <div class="map-filters">
+            <button class="secondary-button" type="button">Newest</button>
+            <button class="secondary-button" type="button">Nearby</button>
+            <button class="secondary-button" type="button">Ready to open</button>
+          </div>
+          <div class="map-status">
+            <span>Live capsules</span>
+            <strong>128</strong>
+          </div>
+        </div>
+        <div class="map-frame">
+          <gmp-map
+            center="48.6466175,25.9045897"
+            zoom="10"
+            map-id="DEMO_MAP_ID"
+            class="js-map map-canvas"
+          >
+          </gmp-map>
+        </div>
+      </section>
+      <section class="map-highlights">
+        <div class="map-highlight-card">
+          <h3>Pin a moment</h3>
+          <p>Add coordinates from your travels so the reveal happens on site.</p>
+        </div>
+        <div class="map-highlight-card">
+          <h3>Leave a trail</h3>
+          <p>Collect capsules into personal journeys you can reopen later.</p>
+        </div>
+        <div class="map-highlight-card">
+          <h3>Share a map</h3>
+          <p>Invite friends to contribute to a shared capsule constellation.</p>
+        </div>
+      </section>
+    </main>
+    <load src="./partials/footer.html" />
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0XOTPawyOjvSONjx5w2wBxoDsf-DTmPo&loading=async&libraries=marker&v=beta&solution_channel=GMP_CCS_complexmarkers_v3"
+      defer
+    ></script>
+    <script src="./js/map.ts" type="module"></script>
+  </body>
 </html>

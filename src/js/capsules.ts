@@ -15,10 +15,12 @@ import type { Capsula } from "./types/capsules";
 
 let intervalid: number;
 let index: number;
+let page = 1;
+let totalPages = 0;
 
 document.addEventListener("DOMContentLoaded", async (e) => {
   const response = await getCapsula();
-  console.log(response);
+  totalPages *= response.totalItems;
 
   const markup = createTemplateCapsules(response.capsules);
   if (refs.capsulaList) {
@@ -89,15 +91,44 @@ refs.capsulaList?.addEventListener("click", (e) => {
   });
 });
 
-refs.nextButton?.addEventListener("click", (e) => {
+refs.nextButton?.addEventListener("click", async (e) => {
   const count = refs.capsulaList?.children.length || 0;
   if (index < count) {
     index += 1;
   }
+  const li = refs.capsulaList?.children[index] as HTMLLIElement;
+  const liId = li.dataset.id as string;
+  const response = await getCapsulaById(liId);
+  const markup = createTemplateCapsulaModal(response);
+  if (refs.capsulaModalDetails) {
+    refs.capsulaModalDetails.innerHTML = markup;
+  }
 });
 
-refs.prevButton?.addEventListener("click", (e) => {
+refs.prevButton?.addEventListener("click", async (e) => {
   if (index > 0) {
     index -= 1;
   }
+  const li = refs.capsulaList?.children[index] as HTMLLIElement;
+  const liId = li.dataset.id as string;
+  const response = await getCapsulaById(liId);
+  const markup = createTemplateCapsulaModal(response);
+  if (refs.capsulaModalDetails) {
+    refs.capsulaModalDetails.innerHTML = markup;
+  }
+});
+
+refs.loadBtn?.addEventListener("click", async (e) => {
+  page += 1;
+  const response = await getCapsula({ page: page });
+  const markup = createTemplateCapsules(response.capsules);
+  refs.capsulaList?.insertAdjacentHTML("beforeend", markup);
+  if (page >= totalPages) {
+    refs.loadBtn?.classList.add("is-hidden");
+  }
+
+  window.scrollBy({
+    top: 550,
+    behavior: "smooth",
+  });
 });

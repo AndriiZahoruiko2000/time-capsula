@@ -9,4 +9,8 @@ export const refs = {
   prevButton: document.querySelector(".js-modal-prev"),
   nextButton: document.querySelector(".js-modal-next"),
   createCapsulaForm: document.querySelector(".js-create-capsula-form"),
+  mapList: document.querySelector(".js-map"),
+  loginBtn: document.querySelector(".js-login-button"),
+  logoutBtn: document.querySelector(".js-logout-button"),
+  loadBtn: document.querySelector(".js-load-btn"),
 };

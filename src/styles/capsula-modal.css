@@ -1,13 +1,20 @@
 .backdrop {
   position: fixed;
   inset: 0;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  place-items: center;
-  gap: clamp(12px, 2vw, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: clamp(20px, 6vw, 52px);
-  background: radial-gradient(circle at 20% 20%, rgba(228, 88, 59, 0.28), transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(47, 122, 122, 0.28), transparent 55%),
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(228, 88, 59, 0.28),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(47, 122, 122, 0.28),
+      transparent 55%
+    ),
     rgba(27, 26, 26, 0.55);
   backdrop-filter: blur(8px);
   opacity: 0;
@@ -61,8 +68,16 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top right, rgba(228, 88, 59, 0.18), transparent 55%),
-    radial-gradient(circle at bottom left, rgba(47, 122, 122, 0.2), transparent 60%);
+  background: radial-gradient(
+      circle at top right,
+      rgba(228, 88, 59, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(47, 122, 122, 0.2),
+      transparent 60%
+    );
   pointer-events: none;
 }
 
@@ -167,8 +182,7 @@
   color: #fffaf0;
   box-shadow: 0 12px 20px rgba(27, 26, 26, 0.2);
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease,
-    background 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .modal button:hover,
